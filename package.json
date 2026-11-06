@@ -1,0 +1,18 @@
+{
+  "name": "testforge-artifact-guard",
+  "version": "0.1.0",
+  "description": "A zero-dependency scanner for credentials accidentally captured in test artifacts.",
+  "type": "module",
+  "bin": {
+    "artifact-guard": "./src/cli.js"
+  },
+  "scripts": {
+    "check": "node --check src/*.js",
+    "scan:example": "node src/cli.js examples/sample-test-report.json",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}
