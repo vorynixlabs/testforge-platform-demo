@@ -1,0 +1,5 @@
+suite: checkout
+status: passed
+duration_ms: 184
+commit_sha: 0123456789abcdef0123456789abcdef01234567
+message: deterministic report fixture

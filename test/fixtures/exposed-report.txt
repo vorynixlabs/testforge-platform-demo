@@ -1,0 +1,4 @@
+suite: synthetic-security-example
+authorization: Bearer pQ7vN2xK9mR4tY8wL3cF6hJ1sD5zB0uE
+cloud_key: AKIAABCDEFGHIJKLMNOP
+status: blocked
