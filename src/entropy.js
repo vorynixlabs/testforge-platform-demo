@@ -1,6 +1,6 @@
 import { fingerprint, maskedPreview } from "./scanner.js";
 
-const candidateExpression = /[A-Za-z0-9+/=_-]{24,}/g;
+export const entropyCandidateExpression = /[A-Za-z0-9+/=_-]{24,}/g;
 const commonDigestLengths = new Set([32, 40, 64, 128]);
 
 export function shannonEntropy(value) {
@@ -34,15 +34,10 @@ export function scanEntropy(text, options = {}) {
   const minimumLength = options.minimumLength ?? 24;
   const findings = [];
 
-  for (const match of text.matchAll(candidateExpression)) {
+  for (const match of text.matchAll(entropyCandidateExpression)) {
     const value = match[0];
     const entropy = shannonEntropy(value);
-    if (
-      value.length < minimumLength ||
-      entropy < threshold ||
-      !hasMixedCharacterClasses(value) ||
-      looksLikeDigest(value)
-    ) {
+    if (!isHighEntropyCandidate(value, { minimumLength, threshold })) {
       continue;
     }
 
@@ -59,4 +54,15 @@ export function scanEntropy(text, options = {}) {
   }
 
   return findings;
+}
+
+export function isHighEntropyCandidate(value, options = {}) {
+  const threshold = options.threshold ?? 4.2;
+  const minimumLength = options.minimumLength ?? 24;
+  return (
+    value.length >= minimumLength &&
+    shannonEntropy(value) >= threshold &&
+    hasMixedCharacterClasses(value) &&
+    !looksLikeDigest(value)
+  );
 }
