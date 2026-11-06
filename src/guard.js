@@ -4,15 +4,17 @@ import { scanPatterns } from "./scanner.js";
 export function scanArtifact(text, options = {}) {
   const patternFindings = scanPatterns(text);
   const entropyFindings = options.entropy === false ? [] : scanEntropy(text, options);
-  const occupied = new Set(
-    patternFindings.map((finding) => `${finding.line}:${finding.column}:${finding.length}`),
-  );
+  const isCoveredByPattern = (finding) =>
+    patternFindings.some(
+      (patternFinding) =>
+        patternFinding.line === finding.line &&
+        finding.column >= patternFinding.column &&
+        finding.column + finding.length <= patternFinding.column + patternFinding.length,
+    );
 
   const findings = [
     ...patternFindings,
-    ...entropyFindings.filter(
-      (finding) => !occupied.has(`${finding.line}:${finding.column}:${finding.length}`),
-    ),
+    ...entropyFindings.filter((finding) => !isCoveredByPattern(finding)),
   ].sort((left, right) =>
     left.line === right.line ? left.column - right.column : left.line - right.line,
   );
