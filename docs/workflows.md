@@ -26,4 +26,9 @@ Regression-count and failure-rate budgets produce a pass or blocked verdict. Rev
 
 ## 7. Publish
 
-The final report includes the verdict, policy reasons, source run identifiers, attempt history, and retained artifacts. CI may merge only after required validation completes successfully.
+Before upload, artifacts pass through defensive content checks such as Artifact
+Guard. A finding blocks publication and points operators to a masked fingerprint;
+it never copies the complete credential into another report. The final report
+includes the verdict, policy reasons, source run identifiers, attempt history, and
+retained artifacts. CI may merge only after required validation completes
+successfully.

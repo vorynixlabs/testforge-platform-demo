@@ -1,6 +1,7 @@
 # Contributing
 
-This public repository accepts documentation improvements, architecture questions, and source-safe workflow examples.
+This public repository accepts tested tool improvements, documentation changes,
+architecture questions, and source-safe workflow examples.
 
 ## Good contributions
 
@@ -8,6 +9,7 @@ This public repository accepts documentation improvements, architecture question
 - add a realistic testing workflow without proprietary data
 - identify ambiguity in the architecture or roadmap
 - improve accessibility, structure, or terminology
+- add a focused scanner rule with synthetic positive and negative fixtures
 
 ## Please avoid
 
@@ -21,6 +23,7 @@ This public repository accepts documentation improvements, architecture question
 1. Open an issue describing the problem or proposed clarification.
 2. Keep each pull request focused on one logical improvement.
 3. Explain how readers or test operators benefit.
-4. Verify links and Markdown rendering before requesting review.
+4. Run `npm test`, `npm run check`, and `npm run scan:example`.
+5. Verify links and Markdown rendering before requesting review.
 
 Security-sensitive reports should be shared privately through the repository security contact rather than a public issue.
