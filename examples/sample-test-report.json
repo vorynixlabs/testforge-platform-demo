@@ -1,0 +1,12 @@
+{
+  "runId": "demo-run-001",
+  "suite": "checkout",
+  "status": "passed",
+  "durationMs": 184,
+  "environment": "preview",
+  "summary": {
+    "passed": 18,
+    "failed": 0,
+    "skipped": 1
+  }
+}
