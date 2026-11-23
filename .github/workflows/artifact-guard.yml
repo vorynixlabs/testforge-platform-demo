@@ -1,4 +1,4 @@
-name: Artifact Guard
+name: TestForge public tools
 
 on:
   pull_request:
@@ -23,3 +23,5 @@ jobs:
       - run: npm run check
       - name: Verify the clean example
         run: node src/cli.js examples/sample-test-report.json
+      - name: Verify the query plan example
+        run: node src/plan-cli.js --policy examples/query-plan-policy.json examples/postgres-explain.json

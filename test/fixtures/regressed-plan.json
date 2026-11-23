@@ -1,0 +1,10 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Seq Scan",
+      "Relation Name": "test_runs",
+      "Total Cost": 740,
+      "Plan Rows": 50000
+    }
+  }
+]

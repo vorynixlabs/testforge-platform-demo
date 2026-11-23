@@ -1,0 +1,11 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Index Scan",
+      "Relation Name": "test_runs",
+      "Index Name": "test_runs_pkey",
+      "Total Cost": 8.17,
+      "Plan Rows": 1
+    }
+  }
+]
