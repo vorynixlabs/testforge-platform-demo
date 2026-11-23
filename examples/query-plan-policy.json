@@ -1,0 +1,6 @@
+{
+  "deniedNodeTypes": ["Seq Scan"],
+  "sequentialScanAllowlist": ["schema_migrations"],
+  "maxRootCost": 100,
+  "maxEstimatedRows": 1000
+}
