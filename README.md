@@ -45,6 +45,26 @@ npm run scan:example
 See [CI integration](docs/artifact-guard-ci.md) and the
 [detection policy](docs/artifact-guard-policy.md) for operational guidance.
 
+## Runnable showcase: Query Plan Guard
+
+Query Plan Guard checks PostgreSQL `EXPLAIN (FORMAT JSON)` files for plan
+regressions that functional database assertions may miss. Policies can deny
+specific node types, allow intentional scans on tiny relations, and bound root
+cost and estimated rows.
+
+```console
+$ node src/plan-cli.js --policy examples/query-plan-policy.json examples/postgres-explain.json
+PASS examples/postgres-explain.json: 1 node(s), 0 finding(s), root cost 8.17
+```
+
+Use `--json` for CI reports. Exit code `0` means every plan passed, `1` means a
+regression was found, and `2` means the input or command was invalid. The tool
+only reads saved plans; it never connects to a database or includes query
+parameters in findings.
+
+See the [Query Plan Guard guide](docs/query-plan-guard.md) for safe plan capture,
+policy design, and CI examples.
+
 ## Platform capabilities
 
 | Area | Capability |
@@ -55,6 +75,7 @@ See [CI integration](docs/artifact-guard-ci.md) and the
 | Reporting | Result summaries, trend analysis, artifact indexing, and retention rules |
 | Release confidence | Baseline comparisons, regression budgets, and auditable verdicts |
 | Integrations | Webhook signatures, retry handling, and structured event records |
+| Database testing | Offline PostgreSQL plan validation and configurable regression gates |
 
 ## Typical workflow
 
@@ -70,6 +91,7 @@ See [CI integration](docs/artifact-guard-ci.md) and the
 
 - [Artifact Guard CI integration](docs/artifact-guard-ci.md)
 - [Artifact Guard policy and safety boundary](docs/artifact-guard-policy.md)
+- [Query Plan Guard](docs/query-plan-guard.md)
 - [Architecture](docs/architecture.md)
 - [Execution and release workflow](docs/workflows.md)
 - [Roadmap](ROADMAP.md)

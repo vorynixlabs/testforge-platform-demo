@@ -1,14 +1,16 @@
 {
-  "name": "testforge-artifact-guard",
-  "version": "0.1.0",
-  "description": "A zero-dependency scanner for credentials accidentally captured in test artifacts.",
+  "name": "testforge-public-tools",
+  "version": "0.2.0",
+  "description": "Zero-dependency public tools for safer test artifacts and PostgreSQL query plans.",
   "type": "module",
   "bin": {
-    "artifact-guard": "./src/cli.js"
+    "artifact-guard": "./src/cli.js",
+    "query-plan-guard": "./src/plan-cli.js"
   },
   "scripts": {
     "check": "node --check src/*.js",
     "scan:example": "node src/cli.js examples/sample-test-report.json",
+    "plan:example": "node src/plan-cli.js --policy examples/query-plan-policy.json examples/postgres-explain.json",
     "test": "node --test"
   },
   "engines": {
